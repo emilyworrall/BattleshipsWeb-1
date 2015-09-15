@@ -11,6 +11,22 @@ class Board
 	  end
   end
 
+	def show
+		output = "<table><tr></tr>"
+		x = 0
+		@grid.each do |cell|
+			if x % 10 == 0
+				output += "</tr><tr>"
+				output += "<th> #{cell} </th>"
+				x += 1
+			else
+				output += "<th> #{cell} </th>"
+				x += 1
+			end
+		end
+		output += "</table>"
+	end
+
 	def place(ship, coord, orientation = :horizontally)
 		coords = [coord]
 		ship.size.times{coords << next_coord(coords.last, orientation)}

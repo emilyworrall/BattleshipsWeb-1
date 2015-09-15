@@ -12,9 +12,15 @@ feature 'Starting a new game' do
     click_button 'New Game'
     expect(page).to have_content "Emily's Game"
   end
-  scenario 'Receives name' do
+  scenario 'Receives no name' do
     visit '/name_input'
     click_button 'New Game'
     expect(page).to have_content "What's your name?"
+  end
+  scenario 'Start game' do
+    visit '/name_input'
+    fill_in 'name', with: 'Emily'
+    click_button 'New Game'
+    expect(page). to have_content 'J10'
   end
 end
