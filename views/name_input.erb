@@ -1,4 +1,4 @@
-<% if @name %>
+<% if @name && !@name.empty? %>
   <%= @name %>'s Game
 <% else %>
   <form action="/name_input"?>

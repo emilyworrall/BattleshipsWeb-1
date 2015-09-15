@@ -1,12 +1,15 @@
 class Board
 	attr_reader :grid
 
-	def initialize(content)
+	def initialize(cell)
 		@grid = {}
-		[*"A".."J"].each do |l|
-			[*1..10].each {|n| @grid["#{l}#{n}".to_sym] = content.new}
-		end
-	end
+		[*1..10].each do |n|
+			[*"A".."J"].each do |l|
+			  @grid["#{l}#{n}".to_sym] = cell.new
+		    @grid["#{l}#{n}".to_sym].content = Water.new
+		  end
+	  end
+  end
 
 	def place(ship, coord, orientation = :horizontally)
 		coords = [coord]
@@ -42,7 +45,7 @@ private
 	end
 
 	def is_a_ship?(cell)
-		cell.content.respond_to?(:sunk?) 
+		cell.content.respond_to?(:sunk?)
 	end
 
 	def any_coord_not_on_grid?(coords)
@@ -64,4 +67,3 @@ private
 	end
 
 end
-
