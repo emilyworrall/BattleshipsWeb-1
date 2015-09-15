@@ -4,6 +4,12 @@ feature 'Starting a new game' do
   scenario 'I am asked to enter my name' do
     visit '/'
     click_link 'New Game'
-    expect(page).to have_content "What's your name?" 
+    expect(page).to have_content "What's your name?"
+  end
+  scenario 'No name input' do
+    visit '/'
+    click_link 'New Game'
+    name = nil
+    expect(page).to have_content "What's your name?"
   end
 end
