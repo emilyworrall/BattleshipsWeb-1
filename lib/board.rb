@@ -14,7 +14,7 @@ class Board
 	def show
 		output = "<table><tr></tr>"
 		x = 0
-		@grid.each do |cell|
+		grid.each do |cell|
 			if x % 10 == 0
 				output += "</tr><tr>"
 				output += "<th> #{cell} </th>"
@@ -25,6 +25,34 @@ class Board
 			end
 		end
 		output += "</table>"
+	end
+
+	def show2
+		output = "<div style= 'width: 700px; height: 650px;'>"
+		[*1..10].each do |n|
+			[*"A".."J"].each do |l|
+				if grid["#{l}#{n}".to_sym].hit?
+					output += "<div style= 'width: 65px; height: 65px;
+					  display: inline-block;
+					  border: 1px rgb(89,89,89) solid;
+	          padding: 0px;
+	          background: rgb(255, 0, 0);'></div>"
+				elsif grid["#{l}#{n}".to_sym].is_a? Ship
+				  output += "<div style= 'width: 65px; height: 65px;
+					  display: inline-block;
+					  border: 1px rgb(89,89,89) solid;
+	          padding: 0px;
+	          background: rgb(171, 95, 36);'></div>"
+				else
+					output += "<div style= 'width: 65px; height: 65px;
+					  display: inline-block;
+					  border: 1px rgb(89,89,89) solid;
+	          padding: 0px;
+	          background: rgb(73, 244, 249);'></div>"
+				end
+			end
+		end
+		output += "</div>"
 	end
 
 	def place(ship, coord, orientation = :horizontally)

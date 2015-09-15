@@ -2,6 +2,7 @@ require 'sinatra/base'
 require_relative 'board'
 require_relative 'cell'
 require_relative 'water'
+require_relative 'ship'
 # enable :sessions
 
 class BattleshipsWeb < Sinatra::Base
