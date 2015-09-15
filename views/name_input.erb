@@ -1,0 +1,9 @@
+<% if @name %>
+  <%= @name %>'s Game
+<% else %>
+  <form action="/name_input"?>
+    What's your name?
+    <input type="text" name="name" required autofocus>
+    <input type="submit" value="New Game">
+  </form>
+<% end %>
